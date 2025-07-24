@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sayani Das | Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant:wght@300;400;700&family=Bodoni+Moda:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primaryDark: '#02066F',
+            secondaryDark: '#5A1894',
+            accentDark: '#38B2AC',
+            textDark: '#FBFBFB',
+            primaryLight: '#bba8ff',
+            secondaryLight: '#BDD5FA',
+            accentLight: '#c6b7fe',
+            boxLight: '#BDD5FA',
+            textLight: '#4d64ac'
+          },
+          fontFamily: {
+            script: ['"Style Script"','cursive'],
+            cormorant: ['Cormorant','serif'],
+            bodoni: ['"Bodoni Moda"','serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Cormorant', serif; overflow-x: hidden; }
+    /* Hide scrollbar for thumbnail container */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="bg-primaryLight text-textLight transition-colors duration-500 dark:bg-primaryDark dark:text-textDark">
+
+  <div id="particles" class="fixed inset-0 -z-10"></div>
+
+  <div id="custom-cursor" class="fixed pointer-events-none z-50 text-xl transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-200"></div>
+
+  <header class="fixed top-0 left-0 w-full bg-secondaryLight dark:bg-secondaryDark shadow z-50 transition-colors duration-500">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-2xl font-script">Sayani Das</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#about" class="hover:text-accentLight dark:hover:text-accentDark">About</a></li>
+          <li><a href="#gallery" class="hover:text-accentLight dark:hover:text-accentDark">Gallery</a></li>
+          <li><a href="#resume" class="hover:text-accentLight dark:hover:text-accentDark">Resume</a></li>
+          <li><a href="#contact" class="hover:text-accentLight dark:hover:text-accentDark">Contact</a></li>
+        </ul>
+      </nav>
+      <div id="theme-toggle" class="w-20 h-10 rounded-lg flex items-center px-1 cursor-pointer transition-colors duration-500 border">
+        <div id="toggle-thumb" class="w-8 h-8 rounded-md flex items-center justify-center shadow-md transition-transform duration-500 ease-in-out">
+          <span id="toggleIcon" class="text-xl"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="pt-20"></div> <section id="about" class="py-12 px-4">
+      <div class="max-w-4xl mx-auto p-8 rounded-lg bg-secondaryLight/30 dark:bg-secondaryDark/30 border border-accentLight dark:border-accentDark shadow-lg transition-colors duration-500">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+          <div class="md:w-1/2 text-center md:text-left order-2 md:order-1">
+            <h2 class="text-3xl font-bodoni mb-4">Sayani Das</h2>
+            <p>I’m looking for an opportunity in a creative studio or gaming company to explore graphic design, 3D art, or UI/UX, gain hands-on experience, and turn my passion into a career. I bring fresh ideas, a unique visual style, and a strong desire to learn and grow.</p>
+          </div>
+          <div class="w-48 h-48 bg-gray-200 dark:bg-gray-700 rounded-full order-1 md:order-2 md:ml-auto">
+            <img src="Me.jpg" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="my-16 w-11/12 mx-auto border-accentLight dark:border-accentDark">
+
+    <section id="gallery" class="py-12 px-4">
+        <div class="max-w-6xl mx-auto p-8 rounded-lg bg-secondaryLight/30 dark:bg-secondaryDark/30 border border-accentLight dark:border-accentDark shadow-lg transition-colors duration-500">
+            <h2 class="text-3xl font-bodoni text-center mb-4">My Work</h2>
+            <p class="text-center mb-8">Click a category to filter the gallery, then select a thumbnail to view.</p>
+
+            <div id="filter-buttons" class="flex flex-wrap items-center justify-center gap-4 mb-10">
+                <button data-filter="all" class="filter-btn bg-white/20 border border-white/30 px-6 py-2 rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">Show All</button>
+                <button data-filter="model" class="filter-btn bg-white/20 border border-white/30 px-6 py-2 rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">3D Modeling</button>
+                <button data-filter="art" class="filter-btn bg-white/20 border border-white/30 px-6 py-2 rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">Digital Art</button>
+                <button data-filter="graphic" class="filter-btn bg-white/20 border border-white/30 px-6 py-2 rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">Graphic Design</button>
+                <button data-filter="uiux" class="filter-btn bg-white/20 border border-white/30 px-6 py-2 rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">UI/UX Design</button>
+            </div>
+            <div id="gallery-viewport" class="w-full min-h-[450px] md:min-h-[550px] bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center mb-8 border border-white/30 p-4">
+                <p class="text-lg">Select a thumbnail below to view my work!</p>
+            </div>
+
+           <div id="thumbnails" class="no-scrollbar flex items-center justify-start md:justify-center space-x-4 overflow-x-auto pb-4">
+                <div id="thumbnails" class="no-scrollbar flex items-center justify-start md:justify-center space-x-4 overflow-x-auto pb-4">
+  <!-- 3D Models -->
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/chess.jpg">
+    <img src="3d Models/chess.jpg" alt="Chess 3D Model" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/Cup.jpg">
+    <img src="3d Models/Cup.jpg" alt="Cup 3D Model" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/Lipstickwballs.jpg">
+    <img src="3d Models/Lipstickwballs.jpg" alt="Lipstick with Balls 3D Model" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/Potion final.jpg">
+    <img src="3d Models/Potion final.jpg" alt="Potion 3D Model" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/SayaniDas_492_pca2.jpg">
+    <img src="3d Models/SayaniDas_492_pca2.jpg" alt="Sayani 3D Project" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+
+  <!-- Digital Art -->
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/Boy looking sideways2.jpg">
+    <img src="Digital art/Boy looking sideways2.jpg" alt="Boy Looking Sideways" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/Girl back2.jpg">
+    <img src="Digital art/Girl back2.jpg" alt="Girl Back View" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/jasmine.jpg">
+    <img src="Digital art/jasmine.jpg" alt="Jasmine Artwork" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/line art.jpg">
+    <img src="Digital art/line art.jpg" alt="Line Art" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/Rabindranath.jpg">
+    <img src="Digital art/Rabindranath.jpg" alt="Rabindranath Portrait" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/Rabindranath light.jpg">
+    <img src="Digital art/Rabindranath light.jpg" alt="Rabindranath Light" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/sad hug.jpg">
+    <img src="Digital art/sad hug.jpg" alt="Sad Hug" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+
+  <!-- Graphic Design -->
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/diva logo.jpg">
+    <img src="Graphic Design/diva logo.jpg" alt="Diva Logo" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/pure leaflet.jpg">
+    <img src="Graphic Design/pure leaflet.jpg" alt="Pure Leaflet" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/pure logo.jpg">
+    <img src="Graphic Design/pure logo.jpg" alt="Pure Logo" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/sp poster.jpg">
+    <img src="Graphic Design/sp poster.jpg" alt="SP Poster" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/vistiting card 2.jpg">
+    <img src="Graphic Design/vistiting card 2.jpg" alt="Visiting Card" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+
+  <!-- UI/UX Designs -->
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Home page.png">
+    <img src="UI Ux Designs/Home page.png" alt="Home Page UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/My cart.png">
+    <img src="UI Ux Designs/My cart.png" alt="My Cart UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Payment.png">
+    <img src="UI Ux Designs/Payment.png" alt="Payment UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Sign in page.png">
+    <img src="UI Ux Designs/Sign in page.png" alt="Sign In UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Starting page.png">
+    <img src="UI Ux Designs/Starting page.png" alt="Starting Page UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+  <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Untitled@2x.png">
+    <img src="UI Ux Designs/Untitled@2x.png" alt="Untitled UI Design" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
+  </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+    <hr class="my-16 w-11/12 mx-auto border-accentLight dark:border-accentDark">
+
+    <section id="resume" class="py-12 px-4 text-center">
+      <div class="max-w-4xl mx-auto p-8 rounded-lg bg-secondaryLight/30 dark:bg-secondaryDark/30 border border-accentLight dark:border-accentDark shadow-lg transition-colors duration-500">
+        <h2 class="text-3xl font-bodoni mb-6">Resume</h2>
+        <a href="path/to/your/resume.pdf" download class="inline-block px-8 py-3 bg-white/20 border border-white/30 text-textLight dark:text-textDark rounded-md shadow-lg transition-all duration-300 hover:bg-accentLight/50 dark:hover:bg-accentDark/50">
+          Download My Resume
+        </a>
+      </div>
+    </section>
+    <hr class="my-16 w-11/12 mx-auto border-accentLight dark:border-accentDark">
+
+    <section id="contact" class="py-12 px-4 text-center">
+      <div class="max-w-4xl mx-auto p-8 rounded-lg bg-secondaryLight/30 dark:bg-secondaryDark/30 border border-accentLight dark:border-accentDark shadow-lg transition-colors duration-500">
+        <h2 class="text-3xl font-bodoni mb-6">Contact Me</h2>
+        <p>Email – sayanidas@example.com</p>
+        <p>LinkedIn – @sayanidas</p>
+        <p>Instagram – @sayani.in</p>
+      </div>
+    </section>
+    </main>
+
+  <footer class="py-6">
+      <p class="text-center text-sm">&copy; 2025 Sayani Das. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // ====== Custom Cursor Script ======
+    const customCursor = document.getElementById('custom-cursor');
+    if (customCursor) {
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        const speed = 0.1;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCustomCursor() {
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+            customCursor.style.left = cursorX + 'px';
+            customCursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCustomCursor);
+        }
+        animateCustomCursor();
+    }
+
+    // ====== Theme Toggle & Particles Script ======
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+
+    function initParticles(isDark) {
+        const colors = tailwind.config.theme.extend.colors;
+        const particleColors = isDark ? [colors.accentDark, colors.secondaryDark] : [colors.accentLight, colors.secondaryLight];
+        const linkColors = isDark ? colors.textDark : colors.textLight;
+
+        if (window.tsParticles) {
+            if (tsParticles.dom().length > 0) {
+                tsParticles.dom().forEach(container => container.destroy());
+            }
+            tsParticles.load('particles', {
+                fullScreen: { enable: true, zIndex: -10 },
+                particles: {
+                    number: { value: 60 },
+                    color: { value: particleColors },
+                    shape: { type: 'circle' },
+                    opacity: { value: { min: 0.4, max: 0.8 }, animation: { enable: true, speed: 0.5, minimumValue: 0.2, sync: false } },
+                    size: { value: { min: 3, max: 6 }, animation: { enable: true, speed: 1, minimumValue: 1, sync: false } },
+                    links: { enable: true, distance: 150, color: linkColors, opacity: 0.5, width: 1, triangles: { enable: true, opacity: 0.05 } },
+                    move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, outModes: 'out', bounce: false }
+                },
+                interactivity: {
+                    events: { onHover: { enable: true, mode: 'repulse' }, onClick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { quantity: 4 } }
+                }
+            });
+        }
+    }
+
+    function updateToggleVisuals(isDark) {
+        const toggleThumb = document.getElementById('toggle-thumb');
+        const toggleIcon = document.getElementById('toggleIcon');
+        if (isDark) {
+            htmlEl.classList.add('dark');
+            themeToggle.classList.remove('justify-start', 'bg-accentLight', 'border-accentDark');
+            themeToggle.classList.add('justify-end', 'bg-accentDark', 'border-accentLight');
+            toggleThumb.classList.remove('bg-white', 'text-primaryDark');
+            toggleThumb.classList.add('bg-gray-800', 'text-primaryLight');
+            toggleIcon.textContent = '🎶';
+            customCursor.textContent = '★';
+            customCursor.classList.remove('text-accentDark');
+            customCursor.classList.add('text-accentLight');
+        } else {
+            htmlEl.classList.remove('dark');
+            themeToggle.classList.remove('justify-end', 'bg-accentDark', 'border-accentLight');
+            themeToggle.classList.add('justify-start', 'bg-accentLight', 'border-accentDark');
+            toggleThumb.classList.remove('bg-gray-800', 'text-primaryLight');
+            toggleThumb.classList.add('bg-white', 'text-primaryDark');
+            toggleIcon.textContent = '🎵';
+            customCursor.textContent = '✿';
+            customCursor.classList.remove('text-accentLight');
+            customCursor.classList.add('text-accentDark');
+        }
+    }
+
+    // ====== All Interaction Scripts ======
+    document.addEventListener('DOMContentLoaded', () => {
+        // Theme initialization
+        const isDarkInitial = localStorage.getItem('theme') === 'dark';
+        updateToggleVisuals(isDarkInitial);
+        initParticles(isDarkInitial);
+
+        // --- Gallery and Filter Logic ---
+        const viewport = document.getElementById('gallery-viewport');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const defaultFilter = 'model';
+        
+        // Function to filter thumbnails
+        function filterGallery(filter) {
+            galleryItems.forEach(item => {
+                const itemType = item.getAttribute('data-type');
+                if (filter === 'all' || itemType === filter) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+            // Clear the viewport when filters change
+            viewport.innerHTML = '<p class="text-lg">Select a thumbnail to view!</p>';
+        }
+        
+        // Function to update active state of buttons
+        function setActiveButton(activeButton) {
+            filterButtons.forEach(button => {
+                if (button === activeButton) {
+                    button.classList.add('ring-2', 'ring-offset-2', 'ring-accentLight', 'dark:ring-accentDark');
+                    button.classList.remove('bg-white/20');
+                    button.classList.add('bg-accentLight/50', 'dark:bg-accentDark/50');
+                } else {
+                    button.classList.remove('ring-2', 'ring-offset-2', 'ring-accentLight', 'dark:ring-accentDark', 'bg-accentLight/50', 'dark:bg-accentDark/50');
+                    button.classList.add('bg-white/20');
+                }
+            });
+        }
+
+        // Add click listener to filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                filterGallery(filter);
+                setActiveButton(button);
+            });
+        });
+
+        // Add click listener to gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const type = item.getAttribute('data-type');
+                const src = item.getAttribute('data-src');
+                viewport.innerHTML = ''; // Clear previous content
+
+                if (type === 'art' || type === 'graphic' || type === 'uiux' ) {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = "Enlarged artwork";
+                    img.className = 'max-w-full max-h-[400px] md:max-h-[500px] rounded-lg object-contain';
+                    viewport.appendChild(img);
+                } else if (type === 'model') {
+                    const modelViewer = document.createElement('model-viewer');
+                    modelViewer.src = src;
+                    modelViewer.setAttribute('alt', 'Interactive 3D model');
+                    modelViewer.setAttribute('auto-rotate', '');
+                    modelViewer.setAttribute('camera-controls', '');
+                    modelViewer.setAttribute('shadow-intensity', '1');
+                    modelViewer.style.width = '100%';
+                    modelViewer.style.height = '100%';
+                    modelViewer.style.minHeight = '450px';
+                    modelViewer.style.backgroundColor = 'transparent';
+                    viewport.appendChild(modelViewer);
+                }
+            });
+        });
+
+        // --- Set Initial State on Page Load ---
+        const initialActiveButton = document.querySelector(`.filter-btn[data-filter="${defaultFilter}"]`);
+        if(initialActiveButton) {
+            setActiveButton(initialActiveButton);
+            filterGallery(defaultFilter);
+        }
+    });
+
+    // Theme toggle click listener
+    themeToggle.addEventListener('click', () => {
+        const isDark = htmlEl.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateToggleVisuals(isDark);
+        initParticles(isDark);
+    });
+  </script>
+  </body>
+</html>
