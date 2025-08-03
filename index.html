@@ -109,7 +109,6 @@
 
            <div id="thumbnails" class="no-scrollbar flex items-center justify-start md:justify-center space-x-4 overflow-x-auto pb-4">
                 <div id="thumbnails" class="no-scrollbar flex items-center justify-start md:justify-center space-x-4 overflow-x-auto pb-4">
-  <!-- 3D Models -->
   <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="model" data-src="3d Models/chess.jpg">
     <img src="3d Models/chess.jpg" alt="Chess 3D Model" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
@@ -126,7 +125,6 @@
     <img src="3d Models/SayaniDas_492_pca2.jpg" alt="Sayani 3D Project" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
 
-  <!-- Digital Art -->
   <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="art" data-src="Digital art/Boy looking sideways2.jpg">
     <img src="Digital art/Boy looking sideways2.jpg" alt="Boy Looking Sideways" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
@@ -149,7 +147,6 @@
     <img src="Digital art/sad hug.jpg" alt="Sad Hug" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
 
-  <!-- Graphic Design -->
   <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="graphic" data-src="Graphic Design/diva logo.jpg">
     <img src="Graphic Design/diva logo.jpg" alt="Diva Logo" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
@@ -166,7 +163,6 @@
     <img src="Graphic Design/vistiting card 2.jpg" alt="Visiting Card" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
 
-  <!-- UI/UX Designs -->
   <div class="gallery-item flex-shrink-0 cursor-pointer" data-type="uiux" data-src="UI Ux Designs/Home page.png">
     <img src="UI Ux Designs/Home page.png" alt="Home Page UI" class="w-28 h-28 object-cover rounded-md border-2 border-transparent hover:border-accentLight dark:hover:border-accentDark transition-all duration-300 hover:scale-110">
   </div>
@@ -254,17 +250,43 @@
             tsParticles.load('particles', {
                 fullScreen: { enable: true, zIndex: -10 },
                 particles: {
-                    number: { value: 60 },
+                    number: { value: 80 },
                     color: { value: particleColors },
                     shape: { type: 'circle' },
-                    opacity: { value: { min: 0.4, max: 0.8 }, animation: { enable: true, speed: 0.5, minimumValue: 0.2, sync: false } },
-                    size: { value: { min: 3, max: 6 }, animation: { enable: true, speed: 1, minimumValue: 1, sync: false } },
-                    links: { enable: true, distance: 150, color: linkColors, opacity: 0.5, width: 1, triangles: { enable: true, opacity: 0.05 } },
-                    move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, outModes: 'out', bounce: false }
+                    opacity: { value: { min: 0.5, max: 0.8 }, animation: { enable: true, speed: 0.6, minimumValue: 0.5, sync: false } },
+                    size: { value: { min: 5, max: 5 }, animation: { enable: true, speed: 1, minimumValue: 1, sync: false } },
+                    links: { enable: true, distance: 120, color: linkColors, opacity: 0.5, width: 0.8, triangles: { enable: true, opacity: 0.05 } },
+                    move: {
+                        enable: true,
+                        speed: 1, // Constant movement speed
+                        direction: 'none', // Particles move randomly in all directions
+                        random: true,
+                        straight: false,
+                        outModes: 'out', // Particles disappear when out of bounds
+                        bounce: true
+                    }
                 },
                 interactivity: {
-                    events: { onHover: { enable: true, mode: 'repulse' }, onClick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { quantity: 4 } }
+                    events: {
+                        onHover: {
+                            enable: true,
+                            mode: 'repulse' // Particles move away when cursor is near
+                        },
+                        onClick: {
+                            enable: true,
+                            mode: 'push' // Creates new particles on click
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        repulse: {
+                            distance: 50, // How far particles are pushed away
+                            duration: 0.5
+                        },
+                        push: {
+                            quantity: 5 // Number of particles pushed on click
+                        }
+                    }
                 }
             });
         }
@@ -353,7 +375,7 @@
                 const src = item.getAttribute('data-src');
                 viewport.innerHTML = ''; // Clear previous content
 
-                if (type === 'art' || type === 'graphic' || type === 'uiux' ) {
+                 if (type === 'art' || type === 'graphic' || type === 'uiux'  || type==='model') {
                     const img = document.createElement('img');
                     img.src = src;
                     img.alt = "Enlarged artwork";
